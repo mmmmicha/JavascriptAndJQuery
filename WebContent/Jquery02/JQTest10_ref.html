@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest10.html</title>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<style type="text/css">
+
+	body, div, span, table, th, td
+	{
+		font-size: 12px;
+	}
+	
+	#list
+	{
+		border: solid 1px gray;
+		border-collapse: collapse;
+		width: 800px;
+	}
+	
+	#list th
+	{
+		width: 152px;
+	}
+	
+	#list td
+	{
+		width: 162px;
+	}
+	
+	#list th, #list td
+	{
+		border: solid 1px gray;
+		padding: 3px;
+		
+	}
+	
+	
+
+</style>
+
+<script type="text/javascript">
+
+	function changeForm()
+	{
+		var list = document.getElementById("list");
+		var title = document.getElementById("title");
+		var date = document.getElementById("date");
+		var start = document.getElementById("start");
+		var end = document.getElementById("end");
+		var color = document.getElementById("color").value;
+		
+		
+		var startN = Number(start.value);
+		var endN = Number(end.value);
+		var dateN = Number(date.value);
+		
+		/* 
+		for(var i = startN; i<=endN; i++)
+		{
+			var str = dateN*10 + i;
+			document.getElementById(str).value = title.value;
+			document.getElementById(str).style.background = color;
+		}
+		 */ 
+		// check~!!!
+		var tds = document.getElementsByTagName("td");	// ※ 모든 td 들
+		
+		//alert(tds.length);	//-- 32 (→ th 제외)
+		
+		// 요일(td)이 4가지 이기 때문에... * 4
+		for (var i = (dateN+(startN-1) * 4); i <=(dateN + (endN-1) * 4); i+=4)
+		{
+			tds[i].style.backgroundColor = color;
+			tds[i].innerText = title.value;
+		}
+		
+		
+		// 월(date) → 0,  13:00(start) → 3,  13:00(end) → 3
+		/*
+		for (var i = (date+(start-1) * 4); i <=(date + (end-1) * 4); i+=4)
+		{
+			
+		}
+		*/
+		/* 
+		for (var i = (0+(3-1) * 4); i <=(0 + (3-1) * 4); i+=4)
+		{
+			tds[i].style.backgroundColor = color;
+			tds[i].innerText = title.value;
+		}
+		 */	
+		/* 
+	 	for (var i = 8; i <= 8; i+=4)
+		{
+			tds[8].style.backgroundColor = color;
+			tds[8].innerText = title.value;
+		}
+		*/
+		
+		document.getElementById("title").value = "";
+		document.getElementById("title").focus();
+		
+		
+	}
+	
+	
+	$(document).ready(function()
+	{
+		
+	});
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>일정</h1>
+	<hr>
+</div>
+
+<table id="list">
+	<tr>
+		<th>&nbsp;</th>
+		<th>월</th>
+		<th>화</th>
+		<th>수</th>
+		<th>목</th>
+	</tr>
+	<tr>
+		<th>11:00</th>
+		<td><input id="11" type="text"></td>
+		<td><input id="21" type="text"></td>
+		<td><input id="31" type="text"></td>
+		<td><input id="41" type="text"></td>
+	</tr>                        
+	<tr>                         
+		<th>12:00</th>           
+		<td><input id="12" type="text"></td>
+		<td><input id="22" type="text"></td>
+		<td><input id="32" type="text"></td>
+		<td><input id="42" type="text"></td>
+	</tr>                        
+	<tr>                         
+		<th>13:00</th>           
+		<td><input id="13" type="text"></td>
+		<td><input id="23" type="text"></td>
+		<td><input id="33" type="text"></td>
+		<td><input id="43" type="text"></td>
+	</tr>                        
+	<tr>                         
+		<th>14:00</th>           
+		<td><input id="14" type="text"></td>
+		<td><input id="24" type="text"></td>
+		<td><input id="34" type="text"></td>
+		<td><input id="44" type="text"></td>
+	</tr>                        
+	<tr>                         
+		<th>15:00</th>           
+		<td><input id="15" type="text"></td>
+		<td><input id="25" type="text"></td>
+		<td><input id="35" type="text"></td>
+		<td><input id="45" type="text"></td>
+	</tr>                        
+	<tr>                         
+		<th>16:00</th>           
+		<td><input id="16" type="text"></td>
+		<td><input id="26" type="text"></td>
+		<td><input id="36" type="text"></td>
+		<td><input id="46" type="text"></td>
+	</tr>                        
+	<tr>                         
+		<th>17:00</th>           
+		<td><input id="17" type="text"></td>
+		<td><input id="27" type="text"></td>
+		<td><input id="37" type="text"></td>
+		<td><input id="47" type="text"></td>
+	</tr>                        
+	<tr>                         
+		<th>18:00</th>           
+		<td><input id="18" type="text"></td>
+		<td><input id="28" type="text"></td>
+		<td><input id="38" type="text"></td>
+		<td><input id="48" type="text"></td>
+	</tr>
+</table>
+<br>
+
+<div>
+	<label>제목</label>
+	<input type="text" id="title">
+	<br>
+	<label>날짜</label>
+	<select id="date">
+		<option value="1">월요일</option>
+		<option value="2">화요일</option>
+		<option value="3">수요일</option>
+		<option value="4">목요일</option>
+	</select>
+	<br>
+	<label>시간</label>
+	<select id="start">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	~
+	<select id="end">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	<br>
+	
+	<label>색상</label>
+	<select id="color">
+		<option value="red">빨강</option>	
+		<option value="blue">파랑</option>	
+		<option value="yellow">노랑</option>	
+		<option value="gray">검정</option>	
+	</select>
+	<br>
+	
+	<input type="button" value="일정 추가하기" style="margin-top: 15px;" onclick="changeForm()"> 
+</div>
+
+</body>
+</html>

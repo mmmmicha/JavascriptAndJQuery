@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest07.html</title>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		// $("#all-check").change(function()
+		$("#all-check").click(function()
+		{
+			// 테스트
+			// alert("체인지");
+			
+			// 테스트
+			// alert( $(this).attr("checked") ); 	//-- undefined / undefined
+			
+			// alert( $(this).prop("checked") );	//-- 속성 → true / false
+			// alert( this.checked );				//-- 속성 → true / false
+			// alert( $(this).is(":checked") );		//-- 속성 → true / false
+			
+			// 방법 1.
+			// $("div > input:checkbox").prop("checked", this.checked);
+			
+			// 방법 2.
+			// 『$(선택자).children()』
+			$("div").children().prop("checked", this.checked);
+			
+		});
+			
+	});
+	
+	
+	
+
+</script>
+</head>
+<body>
+
+<label><input type="checkbox" id="all-check">모두 선택</label>
+<br><br>
+
+<div>
+	<input type="checkbox" id="check-1"><label for="check-1">사과</label><br>
+	<input type="checkbox" id="check-2"><label for="check-2">바나나</label><br>
+	<input type="checkbox" id="check-3"><label for="check-3">수박</label><br>
+	<input type="checkbox" id="check-4"><label for="check-4">딸기</label><br>
+	<input type="checkbox" id="check-5"><label for="check-5">참외</label><br>
+	<input type="checkbox" id="check-6"><label for="check-6">복숭아</label><br>
+	<input type="checkbox" id="check-7"><label for="check-7">귤</label><br>
+	<input type="checkbox" id="check-8"><label for="check-8">배</label><br>
+</div>
+
+</body>
+</html>

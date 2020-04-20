@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest08.html</title>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+
+<style type="text/css">
+
+	div.page
+	{
+		border: solid 1px gray;
+		padding: 3px;
+		margin: 2px;
+		position: absolute;	/* 절대적인 위치값 */
+		right: 10px;		/* 오른쪽 10px */
+		top: 80px;			/* 위쪽 80px */
+	}
+
+</style>
+
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		$("button").css({"display":"block", "width":"200px"});/* inline 형태가 아닌 block 형태 관찰 */
+		
+		$("button").click(function()
+		{
+			// 테스트
+			// $(".page").toggle("slow");	// **접었다 열기!!	// 이건 싹다 없어져
+			//$(this).next().toggle("slow");	// button 의 next object 는 div // 이건 해당되는 것만 없어졌다 생겨
+			
+			// 『$(선택자).next()』 : document 구조 상 다음 엘리먼트
+			$(this).next().toggle(500, function()
+			{
+				alert("토글 기능 테스트 완료~!!!");
+			});
+		});
+		
+	});
+
+</script>
+</head>
+<body>
+
+show()/hide()/toggle()<br>
+slideDown()/slideUp()/slideToggle()<br>
+fadeIn()/fadeOut()/fadeToggle()<br>
+<br><br>
+
+<button>Toggle(토글) 버튼</button><!-- 한번씩 누를때마다 선택/해제가 번갈아 되는 것. ex)전원버튼 -->
+<div class="page">
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button><!-- 한번씩 누를때마다 선택/해제가 번갈아 되는 것. ex)전원버튼 -->
+<div class="page">
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button><!-- 한번씩 누를때마다 선택/해제가 번갈아 되는 것. ex)전원버튼 -->
+<div class="page">
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button><!-- 한번씩 누를때마다 선택/해제가 번갈아 되는 것. ex)전원버튼 -->
+<div class="page">
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button><!-- 한번씩 누를때마다 선택/해제가 번갈아 되는 것. ex)전원버튼 -->
+<div class="page">
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest01.html</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function()
+	{
+		var d = 300;
+		
+		$("#navigation a").each(function()
+		{
+			$(this).stop().animate({"marginTop":"-80px"}, d+=150);	// 서로 150씩의 딜레이를 두고 움직임.
+		});
+		
+		$("#navigation > li").hover(function()
+		{
+			$("a", $(this)).stop().animate({"marginTop":"-2px"}, 100); // 내려오는 속도. 숫자 클수록 느려짐
+		}, function()
+		{
+			$("a", $(this)).stop().animate({"marginTop":"-80px"}, 400); // 올라갈때 올라가는 정도.
+		});
+		
+		
+	});
+
+</script>
+
+
+<style type="text/css">
+
+	body
+	{
+		font-family: Arial;
+		height: 2000px;
+	}
+	
+
+</style>
+
+</head>
+<body>
+
+
+<table>
+	<tr>
+		<td>
+			<ul id="navigation">
+				<li class="home"><a href="#"><span>Home</span></a></li>
+				<li class="about"><a href="#"><span>About</span></a></li>
+				<li class="search"><a href="#"><span>Search</span></a></li>
+				<li class="photos"><a href="#"><span>Photos</span></a></li>
+				<li class="rssfeed"><a href="#"><span>Rss Feed</span></a></li>
+				<li class="podcasts"><a href="#"><span>Podcasts</span></a></li>
+				<li class="contact"><a href="#"><span>Contact</span></a></li>
+			</ul>
+		</td>
+		
+	</tr>
+</table>
+
+
+</body>
+</html>

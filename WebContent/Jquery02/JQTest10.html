@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest10.html</title>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<style type="text/css">
+
+   body, div, span, table, th, td
+   {
+      font-size: 12px;
+   }
+   
+   #list
+   {
+      border: solid 1px gray;
+      border-collapse: collapse;
+      width: 800px;
+   }
+   
+   #list th
+   {
+      width : 152px;
+   }
+   
+   #list td
+   {
+      width : 162px;
+   }
+   
+   #list th, #list td
+   {
+      border: solid 1px gray;
+      padding: 3px;
+   }
+
+</style>
+<script type="text/javascript">
+   // .eq(index)
+   /* 반장오빠코드
+      $(document).ready(function(){
+         $("input[type=button]").click(function(){
+         
+            for (var i = $("#start option:selected").val(); i < $("#end option:selected").val(); i++)
+            {
+               $("tr:eq(" + i + ") > td:eq(" + $("#wd option:selected").val() +")").css("background-color",$("#color option:selected").val()).html($("#subject").val());
+            }
+         
+         });
+      });
+   */
+   
+   $(document).ready(function()
+   {
+      $("#addSch").click(function()
+      {
+         // alert("눌렸당!");
+/*          var color = alert($("#color").prop("value"));
+         
+         var yoyil = alert($("#yoyil").prop("value"));
+         var startTime = alert($("#start").prop("value"));
+         var endTime = alert($("#end").prop("value"));
+         
+         // $("td").eq(5).css("background-color", "yellow"); */
+         
+         // 선생님 풀이 -------------------------------------------------------
+         var item = $("#item").val();   // 제목
+         
+         var week = $("#week").val();   // 요일
+         var start = $("#start").val();   // 시작 시간
+         var end = $("#end").val();      // 끝 시간
+         var color = $("#color").val();   // 색상
+         
+         // js로 처리했던 기능을 jQuery로 구성하면 더 간단하다!
+         // 1. 모든 tr 중 원하는 행을 찾고(eq(i))
+         // 2. 찾은 tr의 자식 td 중 원하는 td를 찾아 색을 바꾸기 / 제목 삽입하기
+         
+         for (var i = start; i <= end; i++)
+         {
+            // $("#list tr").eq(i).text(item);
+            //$("#list tr").eq(i).children().text(item);
+            //$("#list tr").eq(i).children().eq(week).text(item);
+            $("#list tr").eq(i).children().eq(week).css("background-color", color).text(item);
+         }
+         
+      });
+   });
+
+</script>
+</head>
+<body>
+
+<div>
+   <h1>일정 - JQuery 로 하기</h1>
+   <hr>
+</div>
+
+<table id="list">
+   <tr>
+      <th>&nbsp;</th>
+      <th>월</th>
+      <th>화</th>
+      <th>수</th>
+      <th>목</th>
+   </tr>
+   <tr>
+      <th>11:00</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+   </tr>
+   <tr>
+      <th>12:00</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+   </tr>
+   <tr>
+      <th>13:00</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+   </tr>
+   <tr>
+      <th>14:00</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+   </tr>
+   <tr>
+      <th>15:00</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+   </tr>
+   <tr>
+      <th>16:00</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+   </tr>
+   <tr>
+      <th>17:00</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+   </tr>
+   <tr>
+      <th>18:00</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+   </tr>
+</table>
+
+<br>
+<div>
+
+
+   <label> 제목 </label>
+   <input type="text" id="item">
+   <br>
+   <label> 날짜 </label>
+   <select id="week">
+      <option value="1">월요일</option>
+      <option value="2">화요일</option>
+      <option value="3">수요일</option>
+      <option value="4">목요일</option>
+   </select>
+   <br>
+   <label> 시간 </label>
+   <select id="start">
+      <option value="1">11:00</option>
+      <option value="2">12:00</option>
+      <option value="3">13:00</option>
+      <option value="4">14:00</option>
+      <option value="5">15:00</option>
+      <option value="6">16:00</option>
+      <option value="7">17:00</option>
+      <option value="8">18:00</option>
+   </select>
+   ~
+   <select id="end">
+      <option value="1">11:00</option>
+      <option value="2">12:00</option>
+      <option value="3">13:00</option>
+      <option value="4">14:00</option>
+      <option value="5">15:00</option>
+      <option value="6">16:00</option>
+      <option value="7">17:00</option>
+      <option value="8">18:00</option>
+   </select>
+   <br>
+   
+   <label> 색상 </label>
+   <select id="color">
+      <option value="red">빨강</option>
+      <option value="blue">파랑</option>
+      <option value="yellow">노랑</option>
+      <option value="black">검정</option>
+   </select>
+   <br>
+  
+   <input type="button" id="addSch" value="일정 추가하기" style="margin-top: 15px;">
+   </div>
+</body>
+</html>

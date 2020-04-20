@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest02.html</title>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+
+<style type="text/css">
+
+	.item {
+				border: solid 2px red;
+				color: white;
+				background: black;
+		  }
+		  
+</style>
+
+<script type="text/javascript">
+	function test()
+	{
+		alert("test");
+	}
+
+	// jquery(document).ready();
+	//	  ↓
+	// jquery();
+	//    ↓
+	// $();
+
+	// jquery 기본 함수(다 같은 의미)
+	// $();
+	// $(document).ready();
+	// jquery();
+	// jquery(document).ready();
+	// jquery 는 javascript 위에서 돌아가는 거야
+
+	$(document).ready(function()
+	{
+		// 테스트
+		//alert("test");
+
+		// 우리가... 또는 사용자가...
+		// 뭔가 건드리지 않아도... (즉, 특별한 이벤트를 발생시키지 않아도...)
+		// 자동으로 처리될 수 있는 영역
+
+		// body 에 onload 하는 것이랑 같은 기능
+		/* 
+		$("h1").click(function()	// click() 은 jquery 함수. 선택자가 클릭되었을 때...
+		{
+			//alert("클릭되었네요...");
+			//alert( $(this).html() );
+			//$(this).html("어떻게 될까요?");
+			
+			$(this).html( $(this).html() + "★" );
+			
+		});
+		 */
+
+		// 『on()』 함수 : 이벤트 처리
+		/* 
+		$("h1").on("click", function()
+		{
+			//alert("클릭~!!!");
+			//alert( $(this).html());
+			
+			
+			
+		});
+		 */
+		/* 
+		$("h1").one("click", function()
+		{
+			//alert("클릭~!!!");
+			//alert($(this).html());
+			
+			$(this).html(function(index, html)
+			{
+				//alert(html);
+				//alert(index); // this 입장에서 나 자신은 0
+				return html+"★";
+			});
+		});
+		 */
+		/*   
+		$("h1").on(
+		{
+			// mouseenter : 어찌어찌 하겠다.(동작) ... → 마우스 커서가 진입할 때
+			// mouseleave : 어찌어찌 하겠다.(동작) ... → 마우스 커서가 빠져나갈 때
+			mouseenter:function() 
+			{
+				$(this).addClass("item");	// Class 속성을 추가하겠다.
+			}
+			, mouseleave:function()
+			{
+				$(this).removeClass("item");
+			}
+			// <h1>한현수</h1>
+			// → <h1 class="item">한현수</h1>
+			// <h1 class="item">한현수</h1>
+			// → <h1>한현수</h1>
+			
+			// hover 가 사실상 이 둘의 역할을 합쳐서 쓰고 있는 것.
+		}); 
+		 */
+
+		// mouseenter, mouseleave
+		$("h1").hover(function()
+		{
+			$(this).addClass("item");
+
+		}, function()
+		{
+			$(this).removeClass("item");
+		});
+	});
+</script>
+</head>
+<body>
+
+	<h1>한현수</h1>
+	<h1>정광현</h1>
+	<h1>안준헌</h1>
+
+
+
+</body>
+</html>
