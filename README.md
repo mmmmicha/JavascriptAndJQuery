@@ -12,7 +12,7 @@
       > var num = /^[0-9]*$/;
       
     - 같이쓰는 함수
-      > val2.search(val1) : val2 내 val1이 있는 index를 반환한다. 없을 경우 -1 을 반환한다.
-      > val2.test(val1) : val2 내 val1이 있는 index를 반환한다. true, false
+      > val2.search(val1) : val2 내 val1이 있는 index를 반환한다. 없을 경우 -1 을 반환한다.<br>
+      > val2.test(val1) : val2 내 val1이 있는 index를 반환한다. true, false<br>
       > val2.replace(val1, val3) : val2 내 val1을 val3로 변환한다. 자매품 replaceAll()
       
