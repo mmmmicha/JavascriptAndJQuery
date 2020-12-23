@@ -175,7 +175,7 @@ t.onclick = function(event) {
 }
 ```
 
-- 위 사용할 시 주의사항 (IE +8 이하에서 사용 가능)
+- 위 사용할 시 주의사항 (IE +8 이하에서 사용 가능)<br/>
 // 이하버전에서는 이벤트 객체를 핸들러의 인자가 아니라 전역객체의 EVENT 프로퍼티로 제공한다. 또한 TARGET 프로퍼티도 지원하지 않는다.
 ```
 var event = event || window.event ;
@@ -184,10 +184,10 @@ var target = event.target || event.srcElement ;
 ```
 
 ## 이벤트 버블링 과 캡처링
-- element.addEventListener(event, func, capturing)
-// (3번째 파라미터) capturing : true, bubbling : false
-// capturing 은 과거 browser는 안되는 경우가 허다함
-// bubbling 은 어디서든 쓸 수 있음.
+- element.addEventListener(event, func, capturing)<br/>
+// (3번째 파라미터) capturing : true, bubbling : false<br/>
+// capturing 은 과거 browser는 안되는 경우가 허다함<br/>
+// bubbling 은 어디서든 쓸 수 있음.<br/>
 ```
 document.getElementById('target').addEventListener('click', handler, false);
 document.querySelector('fieldset').addEventListener('click', handler, false);
