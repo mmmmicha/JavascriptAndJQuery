@@ -127,8 +127,91 @@ console.log(o.ultraProp);
   - val2.test(val1) : val2 내 val1이 있는 index를 반환한다. true, false
   - val2.replace(val1, val3) : val2 내 val1을 val3로 변환한다. 자매품 replaceAll()
 
-## 많이 사용하는 함수
+## load vs DOMContentLoaded
+- load : 문서내의 모든 리소스(이미지, 스크립트)의 다운로드가 끝난 후에 실행된다. 이것을 에플리케이션의 구동이 너무 지연되는 부작용을 초래할 수 있다.
+- DOMContentLoader : 문서에서 스크립트 작업을 할 수 있을 때 실행되기 때문에 이미지 다운로드를 기다릴 필요가 없다.
+```
+   <script>
+        window.addEventListener('load', function(){
+            console.log('load');
+        })
+        window.addEventListener('DOMContentLoaded', function(){
+            console.log('DOMContentLoaded');
+        })
+   </script>
+```
 
+## javascript vs jquery
+- 코드분량의 차이가 크다
+- 제일중요한건 jquery 라이브러리는 크로스브라우징을 염두에 두었기 때문에 큰걱정을 덜어낸다.
+
+## attribute vs properties
+- attribute : 태그 내 고유의 속성
+- properties : DOM 객체로 전환되었을 때의 속성
+- attribute <-> properties 
+  - 둘 사이의 명칭이 아예 같으면 좋겠지만, attribute 는 보통 min방식 properties는 camel, 게다가 명칭이 아예 다른 경우도 있음.
+  - 가령 <class> 를 예로 보면,
+  
+    ```  
+        attribute : class
+        property : className
+    ```
+    
+## NODE 와 관련된 고찰
+- 태그와 태그 사이에 줄바꿈이 있을 경우 '줄바꿈'도 자식의 일종으로 판단된다
+
+## screen vs viewport
+- screen > viewport
+- screen : 브라우저창 전체
+- viewport : html 표현창 자체
+
+## event 객체
+```
+var t = document.getElementById('target');
+t.onclick = function(event) {
+  // event 는 event 들에 자동적으로 내장되어있는 객체
+  // event.target은 event 객체의 property
+  alert('Hello world, '+event.target.value);
+}
+```
+
+- 위 사용할 시 주의사항 (IE +8 이하에서 사용 가능)
+// 이하버전에서는 이벤트 객체를 핸들러의 인자가 아니라 전역객체의 EVENT 프로퍼티로 제공한다. 또한 TARGET 프로퍼티도 지원하지 않는다.
+```
+var event = event || window.event ;
+지역변수 event 가 있다면 이거 쓰고 아니면 전역변수 event 써라 이런 식 ;;
+var target = event.target || event.srcElement ;
+```
+
+## 이벤트 버블링 과 캡처링
+- element.addEventListener(event, func, capturing)
+// (3번째 파라미터) capturing : true, bubbling : false
+// capturing 은 과거 browser는 안되는 경우가 허다함
+// bubbling 은 어디서든 쓸 수 있음.
+```
+document.getElementById('target').addEventListener('click', handler, false);
+document.querySelector('fieldset').addEventListener('click', handler, false);
+document.querySelector('body').addEventListener('click', handler, false);
+document.querySelector('html').addEventListener('click', handler, false);
+
+function handler(event){
+    var phases = ['capturing', 'target', 'bubbling']
+    console.log(event.target.nodeName, this.nodeName, phases[event.eventPhase-1]);
+}
+function stophandler(event){
+    var phases = ['capturing', 'target', 'bubbling']
+    console.log(event.target.nodeName, this.nodeName, phases[event.eventPhase-1]);
+    event.stopPropagation();
+}
+document.getElementById('target').addEventListener('click', handler, false);
+document.querySelector('fieldset').addEventListener('click', handler, false);
+document.querySelector('body').addEventListener('click', stophandler, false);
+document.querySelector('html').addEventListener('click', handler, false);
+
+// 참고로 ie9 이전의 브라우저에서는 이벤트 전파를 막기 위해서 event.cancelBubble 프로퍼티를 사용해야 한다.
+```
+
+## ETC
 ### 시간
   - new Date() : 년/월/일에 대한 API를 갖고 있는 객체.
     - (new Date()).getFullYear() : 로컬 시간의 연도를 반환
