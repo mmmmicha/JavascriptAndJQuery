@@ -2,6 +2,16 @@
 
 - 개요 : Javascript와 Jqeury의 다양한 예제정리와 개념 정리
 
+## Map vs JSON
+### Map -> String (Map to String)
+```
+  var str = JSON.stringify(Array.from( map.entries()));
+```
+### String -> Map (String to Map)
+```
+  var map = new Map(JSON.parse(str));
+```
+
 ## 비교
 ### == vs ===
 - 1=='1' // `true`
